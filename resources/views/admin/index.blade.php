@@ -1,2 +1,2 @@
-<h1>Index Admin</h1>
+<h1>Bonjour {{ $user->name }}</h1>
 

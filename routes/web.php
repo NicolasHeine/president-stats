@@ -34,19 +34,29 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['auth:admin'])->group(function() {
     Route::get('admin', [AdminController::class, 'index'])->name('admin');
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
-        Route::resource('/users', AdminUserController::class)->name('index', 'users')->missing(function (Request $request) {
-            return Redirect::route('admin.users');
-        });
-        Route::resource('/games', GameController::class)->name('index', 'games')->missing(function (Request $request) {
-            return Redirect::route('admin.games');
-        });
-        Route::resource('/players', PlayerController::class)->name('index', 'players')->missing(function (Request $request) {
-            return Redirect::route('admin.players');
-        });;
+        Route::resource('/users', AdminUserController::class)
+            ->name('index', 'users')
+            ->missing(function (Request $request) {
+                return Redirect::route('admin.users');
+            });
+        Route::resource('/players', PlayerController::class)
+            ->name('index', 'players')
+            ->missing(function (Request $request) {
+                return Redirect::route('admin.players');
+            });
+        Route::resource('/games', GameController::class)
+            ->name('index', 'games')
+            ->except(['edit', 'update', 'destroy'])
+            ->missing(function (Request $request) {
+                return Redirect::route('admin.games');
+            });
         Route::group(['prefix' => 'games/{game}', 'as' => 'games.'], function(){
-            Route::resource('/rounds', RoundController::class)->name('index', 'rounds')->missing(function (Request $request) {
-                return Redirect::route('admin.games.rounds', ['game' => Game::all()->sortBy('created_at')->first()]);
-            });;
+            Route::resource('/rounds', RoundController::class)
+                ->name('index', 'rounds')
+                ->except(['show', 'edit', 'update', 'destroy'])
+                ->missing(function (Request $request) {
+                    return Redirect::route('admin.games.rounds', ['game' => Game::all()->sortBy('created_at')->first()]);
+                });
         });
     });
 });

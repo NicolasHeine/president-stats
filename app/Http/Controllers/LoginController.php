@@ -15,7 +15,7 @@ class LoginController extends Controller
 {
     public function index()
     {
-        if (Auth::check()) {
+        if (Auth::check() || Auth::guard('admin')->check()) {
             return redirect('/');
         }
         return view('login');
@@ -23,7 +23,7 @@ class LoginController extends Controller
 
     public function auth(Request $request)
     {
-        if (Auth::check()) {
+        if (Auth::check() || Auth::guard('admin')->check()) {
             return redirect('/');
         }
         // Retrieve the validated input data...

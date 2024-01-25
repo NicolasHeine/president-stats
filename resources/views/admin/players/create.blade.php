@@ -1,4 +1,4 @@
-<h1>Create User Admin</h1>
+<h1>Create Player</h1>
 
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -10,11 +10,8 @@
     </div>
 @endif
 
-
-<form method="POST" action="{{ route('admin.users.store') }}">
+<form method="POST" action="{{ route('admin.players') }}">
     @csrf
     <input type="text" name="name" value="{{ old('name') }}">
-    <input type="email" name="email" value="{{ old('email') }}">
-    <input type="password" name="password">
     <button>submit</button>
 </form>

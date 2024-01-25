@@ -14,7 +14,9 @@ class GameController extends Controller
      */
     public function index()
     {
-        return view('admin.games.index');
+        return view('admin.games.index',[
+            'games' => Game::all()
+        ]);
     }
 
     /**
@@ -49,31 +51,8 @@ class GameController extends Controller
     public function show(Game $game)
     {
         return view('admin.games.show', [
-            'game' => $game
+            'game' => $game,
+            'player' => Player::class,
         ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Game $game)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateGameRequest $request, Game $game)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Game $game)
-    {
-        //
     }
 }

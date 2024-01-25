@@ -15,7 +15,10 @@ class RoundController extends Controller
      */
     public function index(Game $game)
     {
-        return view('admin.games.rounds.index');
+        return view('admin.games.rounds.index', [
+            'game' => $game,
+            'player' => Player::class
+        ]);
     }
 
     /**
@@ -49,37 +52,5 @@ class RoundController extends Controller
         $round->players()->attach($request->input('players'));
 
         return to_route('admin.games.rounds.create', ['game' => $validated['game_id']]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Game $game, Round $round)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Game $game, Round $round)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateRoundRequest $request, Game $game, Round $round)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Game $game, Round $round)
-    {
-        //
     }
 }

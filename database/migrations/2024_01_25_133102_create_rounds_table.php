@@ -17,6 +17,10 @@ return new class extends Migration
         Schema::create('rounds', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Game::class);
+            $table->foreignIdFor(Player::class, 'president_player_id');
+            $table->foreignIdFor(Player::class, 'vice_president_player_id');
+            $table->foreignIdFor(Player::class, 'trou_player_id');
+            $table->foreignIdFor(Player::class, 'vice_trou_player_id');
             $table->timestamps();
         });
 

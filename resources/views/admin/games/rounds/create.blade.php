@@ -19,7 +19,7 @@
         Joueurs :<br>
         @foreach ($players as $player)
             <label>
-                <input type="checkbox" name="players[]" value="{{ $player->id }}"@if ($lastRound->players()->find($player->id)) checked @endif> {{ $player->name }}
+                <input type="checkbox" name="players[]" value="{{ $player->id }}"@if ($lastRound && $lastRound->players()->find($player->id)) checked @endif> {{ $player->name }}
             </label><br>
         @endforeach
         <label>
@@ -27,7 +27,7 @@
             <select name="president_player_id">
                 <option value="">-</option>
                 @foreach ($players as $player)
-                    <option value="{{ $player->id }}"@if ($lastRound->president_player_id == $player->id) selected @endif>{{ $player->name }}</option>
+                    <option value="{{ $player->id }}"@if ($lastRound && $lastRound->president_player_id == $player->id) selected @endif>{{ $player->name }}</option>
                 @endforeach
             </select>
         </label>
@@ -36,7 +36,7 @@
             <select name="vice_president_player_id">
                 <option value="">-</option>
                 @foreach ($players as $player)
-                    <option value="{{ $player->id }}"@if ($lastRound->vice_president_player_id == $player->id) selected @endif>{{ $player->name }}</option>
+                    <option value="{{ $player->id }}"@if ($lastRound && $lastRound->vice_president_player_id == $player->id) selected @endif>{{ $player->name }}</option>
                 @endforeach
             </select>
         </label>
@@ -45,7 +45,7 @@
             <select name="trou_player_id">
                 <option value="">-</option>
                 @foreach ($players as $player)
-                    <option value="{{ $player->id }}"@if ($lastRound->trou_player_id == $player->id) selected @endif>{{ $player->name }}</option>
+                    <option value="{{ $player->id }}"@if ($lastRound && $lastRound->trou_player_id == $player->id) selected @endif>{{ $player->name }}</option>
                 @endforeach
             </select>
         </label>
@@ -54,7 +54,7 @@
             <select name="vice_trou_player_id">
                 <option value="">-</option>
                 @foreach ($players as $player)
-                    <option value="{{ $player->id }}"@if ($lastRound->vice_trou_player_id == $player->id) selected @endif>{{ $player->name }}</option>
+                    <option value="{{ $player->id }}"@if ($lastRound && $lastRound->vice_trou_player_id == $player->id) selected @endif>{{ $player->name }}</option>
                 @endforeach
             </select>
         </label>

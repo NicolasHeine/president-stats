@@ -15,7 +15,9 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index');
+        return view('admin.users.index', [
+            'users' => User::all()
+        ]);
     }
 
     /**
@@ -60,7 +62,9 @@ class AdminUserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('admin.users.edit', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -68,7 +72,22 @@ class AdminUserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        // Retrieve the validated input data...
+        $validated = $request->validated();
+        $validated = $request->safe()->all();
+
+        if(!Hash::check($validated['password'], $user->password)){
+            return back()->withErrors('Ce compte n\'existe pas');
+        }
+
+        $user->email = $validated['email'];
+        $user->name = $validated['name'];
+        if(isset($validated['new_password']) && $validated['new_password']){
+            $user->password = Hash::make($validated['new_password']);
+        }
+        $user->update();
+
+        return to_route('admin.users.show', ['user' => $user]);
     }
 
     /**

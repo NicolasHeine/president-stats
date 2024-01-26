@@ -24,7 +24,10 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'email' => ['required', 'email'],
+            'name' => ['required'],
             'password' => ['required', Password::min(8)],
+            'new_password' => ['nullable', Password::min(8)],
         ];
     }
 }

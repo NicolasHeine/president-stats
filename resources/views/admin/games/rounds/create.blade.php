@@ -14,7 +14,6 @@
 
 <form method="POST" action="{{ route('admin.games.rounds.store', ['game' => $game]) }}">
     @csrf
-    <input type="hidden" name="game_id" value="{{ $game->id }}">
     @if ($players)
         Joueurs :<br>
         @foreach ($players as $player)

@@ -24,7 +24,6 @@ class StoreRoundRequest extends FormRequest
     {
         return [
             'players' => ['required'],
-            'game_id' => ['required', 'integer'],
             'president_player_id' => ['required', 'integer'],
             'vice_president_player_id' => ['required', 'integer'],
             'trou_player_id' => ['required', 'integer'],

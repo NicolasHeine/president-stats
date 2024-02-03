@@ -13,6 +13,7 @@
 
 <form method="POST" action="{{ route('admin.users.update', ['user' => $user]) }}">
     @csrf
+    @method('PUT')
     <input type="text" name="name" value="{{ $user->name }}">
     <input type="email" name="email" value="{{ $user->email }}">
     <input type="password" name="password">

@@ -36,11 +36,10 @@ Route::middleware(['auth:admin'])->group(function() {
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
         Route::resource('/users', AdminUserController::class)
             ->name('index', 'users')
-            ->except(['update'])
             ->missing(function (Request $request) {
                 return Redirect::route('admin.users');
             });
-        Route::post('/users/{user}', [AdminUserController::class, 'update'])->name('users.update');
+        //Route::post('/users/{user}', [AdminUserController::class, 'update'])->name('users.update');
         Route::resource('/players', PlayerController::class)
             ->name('index', 'players')
             ->missing(function (Request $request) {

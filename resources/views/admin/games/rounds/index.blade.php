@@ -1,4 +1,8 @@
-<div>
+@extends('layouts.admin')
+
+@section('title', 'Liste rounds')
+
+@section('content')
     <a href="{{ route('admin.games.show', ['game' => $game]) }}">Return</a>
     <h1>Game {{ $game->id }}</h1>
     <a href="{{ route('admin.games.rounds.create', ['game' => $game]) }}">Add round</a>
@@ -26,4 +30,4 @@
         @endif
         </tbody>
     </table>
-</div>
+@endsection

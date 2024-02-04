@@ -1,11 +1,15 @@
-<div>
+@extends('layouts.admin')
+
+@section('title', 'Liste parties')
+
+@section('content')
     <h1>List of games</h1>
     <table>
         <thead>
-            <tr>
-                <th>#</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>#</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         @if ($games)
@@ -18,4 +22,4 @@
         @endif
         </tbody>
     </table>
-</div>
+@endsection

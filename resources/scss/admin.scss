@@ -1,0 +1,80 @@
+.ad{
+  display: grid;
+  grid-template-areas: 'aside main';
+  grid-template-columns: 300px 1fr;
+  position: relative;
+}
+
+.adSide{
+  background: rgb(var(--color-secondary));
+  color: rgb(var(--color-text-secondary));
+  height: 100vh;
+  grid-area: aside;
+  left: 0;
+  position: sticky;
+  top: 0;
+  &__title{
+    padding: 1.5rem;
+    text-align: center;
+  }
+}
+
+.adMenu{
+  &__list{
+
+  }
+  &__item{
+    &:first-child{
+      border-top: 1px solid rgb(var(--color-secondary-alt));
+    }
+    details{
+      border-bottom: 1px solid rgb(var(--color-secondary-alt));
+      &[open]{
+        background: rgb(var(--color-secondary-alt));
+        border-bottom: 1px solid rgb(var(--color-secondary));
+        summary{
+          svg{
+            transform: rotate(180deg) translate3d(0, 0, 0);
+          }
+        }
+      }
+    }
+    summary{
+      cursor: pointer;
+      display: flex;
+      padding: 1.5rem;
+      position: relative;
+      span{
+        display: block;
+        flex: 1;
+        margin-right: 1.5rem;
+      }
+      svg{
+        height: auto;
+        transform: rotate(0deg) translate3d(0, 0, 0);
+        transition: .3s;
+        width: 1.5rem;
+      }
+    }
+  }
+  &__sublist{
+    margin-bottom: 1rem;
+  }
+  &__subitem{
+    a{
+      display: block;
+      font-size: 1.4rem;
+      padding: 1rem 1.5rem 1rem 2.5rem;
+      text-decoration: none;
+      &:hover,
+      &.--active{
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.adMain{
+  background: rgb(var(--color-primary-alt));
+  padding: 1.5rem;
+}

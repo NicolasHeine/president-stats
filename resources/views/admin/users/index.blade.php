@@ -1,4 +1,8 @@
-<div>
+@extends('layouts.admin')
+
+@section('title', 'Liste utilisateurs')
+
+@section('content')
     <h1>List of users</h1>
     <table>
         <thead>
@@ -27,4 +31,4 @@
         @endif
         </tbody>
     </table>
-</div>
+@endsection

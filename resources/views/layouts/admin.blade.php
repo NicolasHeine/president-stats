@@ -6,14 +6,14 @@
 @endsection
 
 @section('main')
-    <div class="ad">
-        <aside class="adSide">
-            <header class="adSide__header">
-                <h1 class="adSide__title">Admin Stats</h1>
+    <div class="admin">
+        <aside class="adminSide">
+            <header class="adminSide__header">
+                <h1 class="adminSide__title">Admin Stats</h1>
             </header>
             @include('admin.components.menu')
         </aside>
-        <main class="adMain">
+        <main class="adminMain">
             @yield('content')
         </main>
     </div>

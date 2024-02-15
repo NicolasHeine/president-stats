@@ -1,4 +1,4 @@
-<nav class="adminMenu">
+<nav class="adminMenu js-admin-menu">
     <ul class="adminMenu__list">
         <li class="adminMenu__item">
             <details @if(str_starts_with(Request::url(), route('admin.users'))) open @endif >

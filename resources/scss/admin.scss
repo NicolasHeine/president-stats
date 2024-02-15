@@ -1,8 +1,14 @@
 .admin{
   display: grid;
-  grid-template-areas: 'aside main';
-  grid-template-columns: 300px 1fr;
+  grid-template-areas: 'aside'
+                       'main';
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
   position: relative;
+  @media screen and (min-width: 768px){
+    grid-template-areas: 'aside main';
+    grid-template-columns: 300px 1fr;
+  }
   &__table{
     border: 2px solid rgb(var(--color-secondary-alt));
     border-collapse: separate;
@@ -37,20 +43,78 @@
 }
 
 .adminSide{
+  align-items: center;
   background: rgb(var(--color-secondary));
   color: rgb(var(--color-text-secondary));
-  height: 100vh;
+  display: grid;
+  grid-template-areas: 'menu title .';
+  grid-template-columns: 1fr auto 1fr;
   grid-area: aside;
   left: 0;
   position: sticky;
   top: 0;
+  @media screen and (min-width: 768px){
+    display: block;
+    height: 100vh;
+  }
   &__title{
+    grid-area: title;
     padding: 1.5rem;
     text-align: center;
+  }
+  &__menu{
+    grid-area: menu;
+    padding: 1.5rem;
+    @media screen and (min-width: 768px){
+      padding: 0;
+    }
+    &__button{
+      align-items: center;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      display: inline-flex;
+      height: 22px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0;
+      @media screen and (min-width: 768px){
+        display: none;
+      }
+      span{
+        background: rgb(var(--color-text-secondary));
+        display: block;
+        height: 2px;
+        width: 31px;
+      }
+    }
   }
 }
 
 .adminMenu{
+  background: rgb(var(--color-secondary));
+  height: calc(100vh - 100%);
+  left: 0;
+  position: absolute;
+  top: 100%;
+  transform: translateX(-100%) translate3d(0, 0, 0);
+  transition: .3s;
+  width: 100%;
+  z-index: 1;
+  @media screen and (min-width: 768px){
+    background: transparent;
+    height: auto;
+    position: static;
+    transform: none;
+    transition: none;
+    width: auto;
+  }
+  &.--show{
+    transform: translateX(0) translate3d(0, 0, 0);
+    @media screen and (min-width: 768px){
+      transform: none;
+    }
+  }
   &__item{
     &:first-child{
       border-top: 1px solid rgb(var(--color-secondary-alt));

@@ -5,13 +5,25 @@
   @vite('resources/scss/admin.scss')
 @endsection
 
+@section('js')
+  @parent
+  @vite('resources/js/admin.js')
+@show
+
 @section('main')
   <div class="admin">
     <aside class="adminSide">
       <header class="adminSide__header">
         <h1 class="adminSide__title">Admin Stats</h1>
       </header>
-      @include('admin.components.menu')
+      <div class="adminSide__menu">
+        <button class="adminSide__menu__button js-admin-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        @include('admin.components.menu')
+      </div>
     </aside>
     <main class="adminMain">
       @section('adminHeader')

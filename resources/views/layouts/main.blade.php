@@ -12,5 +12,8 @@
 </head>
 <body>
     @yield('main')
+    @section('js')
+      @vite('resources/js/app.js')
+    @show
 </body>
 </html>

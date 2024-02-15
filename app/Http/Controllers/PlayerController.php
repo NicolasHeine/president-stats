@@ -13,7 +13,9 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        return view('admin.players.index');
+        return view('admin.players.index', [
+          'players' => Player::all()
+        ]);
     }
 
     /**
@@ -57,7 +59,9 @@ class PlayerController extends Controller
      */
     public function edit(Player $player)
     {
-        //
+      return view('admin.players.edit', [
+        'player' => $player
+      ]);
     }
 
     /**
@@ -65,7 +69,14 @@ class PlayerController extends Controller
      */
     public function update(UpdatePlayerRequest $request, Player $player)
     {
-        //
+      // Retrieve the validated input data...
+      $validated = $request->validated();
+      $validated = $request->safe()->all();
+
+      $player->name = $validated['name'];
+      $player->update();
+
+      return to_route('admin.players.show', ['player' => $player]);
     }
 
     /**

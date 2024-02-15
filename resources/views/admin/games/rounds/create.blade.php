@@ -2,9 +2,9 @@
 
 @section('title', 'Création partie')
 
-@section('content')
-    <h1>Create round</h1>
+@section('adminHeaderTitle', 'Create round')
 
+@section('content')
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>

@@ -2,6 +2,6 @@
 
 @section('title', 'Joueur')
 
-@section('content')
-    Show player {{ $player->id }}
+@section('adminHeaderTitle')
+  Show player {{ $player->id }}
 @endsection

@@ -2,6 +2,6 @@
 
 @section('title', 'Dashboard admin')
 
-@section('content')
-    <h1>Bonjour {{ $user->name }}</h1>
+@section('adminHeaderTitle')
+  Bonjour {{ $user->name }}
 @endsection

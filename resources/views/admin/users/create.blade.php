@@ -2,9 +2,9 @@
 
 @section('title', 'Création utilisateur')
 
-@section('content')
-    <h1>Create User Admin</h1>
+@section('adminHeaderTitle', 'Create User Admin')
 
+@section('content')
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>

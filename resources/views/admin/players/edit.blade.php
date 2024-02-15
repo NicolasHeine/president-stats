@@ -2,7 +2,11 @@
 
 @section('title', 'Modification utilisateur')
 
-@section('adminHeaderTitle', 'Edit User Admin')
+@section('adminHeaderTitle', 'Edit player')
+
+@section('adminHeaderSide')
+  <a href="{{ route('admin.players') }}" class="button --danger">Return</a>
+@endsection
 
 @section('content')
     @if ($errors->any())
@@ -16,13 +20,10 @@
     @endif
 
 
-    <form method="POST" action="{{ route('admin.users.update', ['user' => $user]) }}">
+    <form method="POST" action="{{ route('admin.players.update', ['player' => $player]) }}">
         @csrf
         @method('PUT')
-        <input type="text" name="name" value="{{ $user->name }}">
-        <input type="email" name="email" value="{{ $user->email }}">
-        <input type="password" name="password">
-        <input type="password" name="new_password">
+        <input type="text" name="name" value="{{ $player->name }}">
         <button>submit</button>
     </form>
 @endsection

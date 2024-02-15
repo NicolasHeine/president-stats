@@ -3,6 +3,37 @@
   grid-template-areas: 'aside main';
   grid-template-columns: 300px 1fr;
   position: relative;
+  &__table{
+    border: 2px solid rgb(var(--color-secondary-alt));
+    border-collapse: separate;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+    th{
+      background: rgb(var(--color-secondary-alt));
+      color: rgb(var(--color-text-secondary));
+      padding: 10px 15px;
+    }
+    tbody{
+      tr{
+        &:nth-child(2n){
+          td{
+            background: rgb(var(--color-alt));
+          }
+        }
+        &:last-child{
+          td{
+            border-bottom: 0;
+          }
+        }
+      }
+      td{
+        border-bottom: 1px solid rgb(var(--color-secondary-alt));
+        padding: 10px 15px;
+        vertical-align: center;
+      }
+    }
+  }
 }
 
 .adminSide{
@@ -74,4 +105,18 @@
 .adminMain{
   background: rgb(var(--color-primary-alt));
   padding: 1.5rem;
+  &__header{
+    align-items: center;
+    display: flex;
+    margin-bottom: 1.5rem;
+    &__main{
+      flex: 1;
+    }
+    &__side{
+      margin-left: 15px;
+      &:empty{
+        display: none;
+      }
+    }
+  }
 }

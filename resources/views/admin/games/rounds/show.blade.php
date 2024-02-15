@@ -2,8 +2,8 @@
 
 @section('title', 'Round')
 
-@section('content')
-    Show round {{ $round->id }}
+@section('adminHeaderTitle')
+  Show round {{ $round->id }}
 @endsection
 
 

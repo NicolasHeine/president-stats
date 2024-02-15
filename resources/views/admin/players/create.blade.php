@@ -2,9 +2,9 @@
 
 @section('title', 'Création joueur')
 
-@section('content')
-    <h1>Create Player</h1>
+@section('adminHeaderTitle', 'Create player')
 
+@section('content')
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>

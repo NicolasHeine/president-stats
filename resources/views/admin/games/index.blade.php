@@ -2,24 +2,25 @@
 
 @section('title', 'Liste parties')
 
+@section('adminHeaderTitle', 'List of games')
+
 @section('content')
-    <h1>List of games</h1>
-    <table>
-        <thead>
+  <table class="admin__table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if ($games)
+      @foreach($games as $game)
         <tr>
-            <th>#</th>
-            <th>Actions</th>
+          <td>{{ $game->id }}</td>
+          <td><a href="{{ route('admin.games.show', ['game' => $game]) }}" class="button">See details</a></td>
         </tr>
-        </thead>
-        <tbody>
-        @if ($games)
-            @foreach($games as $game)
-                <tr>
-                    <td>{{ $game->id }}</td>
-                    <td><a href="{{ route('admin.games.show', ['game' => $game]) }}">See details</a></td>
-                </tr>
-            @endforeach
-        @endif
-        </tbody>
-    </table>
+      @endforeach
+    @endif
+    </tbody>
+  </table>
 @endsection

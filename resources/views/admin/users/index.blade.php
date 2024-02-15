@@ -2,9 +2,10 @@
 
 @section('title', 'Liste utilisateurs')
 
+@section('adminHeaderTitle', 'List of users')
+
 @section('content')
-    <h1>List of users</h1>
-    <table>
+    <table class="admin__table">
         <thead>
         <tr>
             <th>#</th>
@@ -23,8 +24,8 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->is_admin }}</td>
                     <td>
-                        <a href="{{ route('admin.users.show', ['user' => $user]) }}">See profil</a>
-                        <a href="{{ route('admin.users.edit', ['user' => $user]) }}">Edit profil</a>
+                        <a href="{{ route('admin.users.show', ['user' => $user]) }}" class="button">See profil</a>
+                        <a href="{{ route('admin.users.edit', ['user' => $user]) }}" class="button --warning">Edit profil</a>
                     </td>
                 </tr>
             @endforeach

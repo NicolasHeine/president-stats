@@ -1,20 +1,28 @@
 @extends('layouts.main')
 
 @section('assets')
-    @parent
-    @vite('resources/scss/admin.scss')
+  @parent
+  @vite('resources/scss/admin.scss')
 @endsection
 
 @section('main')
-    <div class="admin">
-        <aside class="adminSide">
-            <header class="adminSide__header">
-                <h1 class="adminSide__title">Admin Stats</h1>
-            </header>
-            @include('admin.components.menu')
-        </aside>
-        <main class="adminMain">
-            @yield('content')
-        </main>
-    </div>
+  <div class="admin">
+    <aside class="adminSide">
+      <header class="adminSide__header">
+        <h1 class="adminSide__title">Admin Stats</h1>
+      </header>
+      @include('admin.components.menu')
+    </aside>
+    <main class="adminMain">
+      @section('adminHeader')
+        <div class="adminMain__header">
+          <div class="adminMain__header__main">
+            <h1 class="adminMain__header__title">@yield('adminHeaderTitle')</h1>
+          </div>
+          <div class="adminMain__header__side">@yield('adminHeaderSide')</div>
+        </div>
+      @show
+      @yield('content')
+    </main>
+  </div>
 @endsection

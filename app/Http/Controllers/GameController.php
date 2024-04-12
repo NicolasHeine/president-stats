@@ -15,7 +15,8 @@ class GameController extends Controller
     public function index()
     {
         return view('admin.games.index',[
-            'games' => Game::all()
+            'games' => Game::all(),
+            'player' => Player::class,
         ]);
     }
 

@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', 'Accueil')
+
 @section('js')
     @parent
     @vite('resources/js/app.js')

@@ -7,6 +7,7 @@ use App\Models\Game;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\RoundController;
@@ -23,9 +24,8 @@ use App\Http\Middleware\Authenticate;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'auth']);

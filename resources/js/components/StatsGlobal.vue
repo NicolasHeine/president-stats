@@ -1,14 +1,14 @@
 <template>
   <div class="statsGlobal__container">
-    <div class="statsGlobal__title">Nombre de partie :</div>
+    <div class="statsGlobal__title">Nombre de parties :</div>
     <div class="statsGlobal__value">{{ stats.score }}</div>
   </div>
   <div class="statsGlobal__container">
-    <div class="statsGlobal__title">Nombre de tour :</div>
+    <div class="statsGlobal__title">Nombre de tours :</div>
     <div class="statsGlobal__value">{{ stats.total }}</div>
   </div>
   <div class="statsGlobal__container">
-    <div class="statsGlobal__title">Nombre de tour/partie :</div>
+    <div class="statsGlobal__title">Nombre de tours/parties :</div>
     <div class="statsGlobal__value">{{ stats.pourcent }}</div>
   </div>
 </template>

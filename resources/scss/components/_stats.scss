@@ -1,3 +1,117 @@
 .stats{
+  background: rgb(var(--color-primary));
+  border-radius: .5rem;
+  color: rgb(var(--color-text));
+  padding: 1.5rem;
+  &.--large{
+    @media screen and (min-width: 990px){
+      grid-column: span 2;
+    }
+  }
+  &__title{
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  &__list{
+    align-items: flex-end;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  &__item{
+    $si: &;
+    grid-column: span 3;
+    &:nth-child(1){
+      grid-column: 2;
+    }
+    &:nth-child(2){
+      grid-column: 1;
+      grid-row: 1;
+    }
+    &:nth-child(3){
+      grid-column: 3;
+      grid-row: 1;
+    }
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3){
+      #{$si}__name{
+        margin-bottom: .5rem;
+        text-align: center;
+      }
+      #{$si}__score{
+        align-items: center;
+        background: #ffd787;
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        justify-content: center;
+      }
+    }
+    &:nth-child(1){
+      #{$si}__score{
+        background: #ffd787;
+        height: 10rem;
+      }
+    }
+    &:nth-child(2){
+      #{$si}__score{
+        background: #ccc7c1;
+        height: 7rem;
+      }
+    }
+    &:nth-child(3){
+      #{$si}__score{
+        background: #e7a688;
+        height: 5rem;
+      }
+    }
+    &:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)){
+      align-items: center;
+      background: rgb(var(--color-secondary));
+      border-radius: .5rem;
+      color: rgb(var(--color-text-secondary));
+      display: flex;
+      gap: .5rem;
+      padding: .5rem;
+    }
+    &__name{
+      flex: 1;
+    }
+    &__score{
+      text-align: center;
+    }
+    &__total{
+      font-size: 1rem;
+    }
+  }
+}
 
+.statsGlobal{
+  background: rgb(var(--color-primary));
+  border-radius: 5px;
+  color: rgb(var(--color-text));
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  justify-content: center;
+  padding: 1.5rem;
+  @media screen and (min-width: 768px){
+    grid-column: span 2;
+  }
+  @media screen and (min-width: 990px){
+    grid-column: span 3;
+  }
+  &__container{
+    align-items: center;
+    display: flex;
+    gap: 1.5rem;
+    &:not(:last-child){
+      margin-bottom: 1.5rem;
+    }
+  }
+  &__title{
+    flex: 1;
+  }
 }

@@ -1,3 +1,24 @@
 .statsContainer{
-
+  background: rgb(var(--color-secondary));
+  color: rgb(var(--color-text-secondary));
+  min-height: 100vh;
+  padding: 1.5rem;
+  &__header{
+    background: rgb(var(--color-primary));
+    border-radius: .5rem;
+    color: rgb(var(--color-text));
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  &__grid{
+    display: grid;
+    gap: 1.5rem;
+    @media screen and (min-width: 768px){
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media screen and (min-width: 990px){
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
 }

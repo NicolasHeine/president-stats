@@ -1,10 +1,12 @@
 <template>
   <div class="stats__title">Le plus souvent {{ title }}</div>
   <ol class="stats__list">
-    <li class="stats__list__item" v-for="stat in stats">
-      <p>{{ stat.name }}</p>
-      <p>{{ stat.pourcent }}%</p>
-      <p>{{ stat.score }} / {{ stat.total }}</p>
+    <li class="stats__item" v-for="stat in stats">
+      <div class="stats__item__name">{{ stat.name }}</div>
+      <div class="stats__item__score">
+        <div class="stats__item__pourcent">{{ stat.pourcent }}%</div>
+        <div class="stats__item__total">{{ stat.score }} / {{ stat.total }}</div>
+      </div>
     </li>
   </ol>
 </template>

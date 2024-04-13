@@ -53,7 +53,7 @@ class Stats
                 $this->getCalculatedStats('bottom');
                 break;
             case 'queen':
-                $this->getCalculatedStatsQueen('bottom');
+                $this->getCalculatedStatsQueen();
                 break;
         }
 
@@ -61,11 +61,10 @@ class Stats
             if($el['total']){
                 if($this->type == 'global'){
                     $el['pourcent'] = round($el['total']/$el['score'], 2);
-                    return $el;
-                }elseif($el['total'] >= 20){
+                }else{
                     $el['pourcent'] = round($el['score'] * 100 / $el['total'], 2);
-                    return $el;
                 }
+                return $el;
             }
         }, $this->stats);
 
@@ -108,9 +107,14 @@ class Stats
                 }
             }
         }
+        foreach ($this->stats as $key => $stats){
+            if($stats['total'] < 20){
+                unset($this->stats[$key]);
+            }
+        }
     }
 
-    public function getCalculatedStatsQueen(String $type){
+    public function getCalculatedStatsQueen(){
         foreach($this->games as $game){
             $this->stats[$game->hearth_queen_player_id]['score']++;
             foreach ($game->rounds[0]->players as $player){

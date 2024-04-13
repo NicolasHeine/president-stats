@@ -15,8 +15,10 @@ class StatsResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'hearth_queen_player_id' => $this->hearth_queen_player_id,
+            'name' => $this['name'],
+            'pourcent' => $this['pourcent'],
+            'score' => $this['score'],
+            'total' => $this['total'],
         ];
     }
 }

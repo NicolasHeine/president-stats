@@ -1,15 +1,19 @@
 <template>
-  <template v-for="stat in stats">
-    <p v-text="stat.hearth_queen_player_id" />
-  </template>
-  {{ type }}
+  <div class="stats__title">Le plus souvent {{ title }}</div>
+  <ol class="stats__list">
+    <li class="stats__list__item" v-for="stat in stats">
+      <p>{{ stat.name }}</p>
+      <p>{{ stat.pourcent }}%</p>
+      <p>{{ stat.score }} / {{ stat.total }}</p>
+    </li>
+  </ol>
 </template>
 
 <script setup>
   import {ref} from "vue";
 
   const stats = ref([]);
-  const props = defineProps(['type'])
+  const props = defineProps(['type', 'title']);
 
   const loadFromServer = () => {
     axios.get('/api/stats', {

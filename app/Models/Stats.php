@@ -121,6 +121,11 @@ class Stats
                 $this->stats[$player->id]['total']++;
             }
         }
+        foreach ($this->stats as $key => $stats){
+            if($stats['total'] < 5){
+                unset($this->stats[$key]);
+            }
+        }
     }
 
     public function getGlobalStats(){

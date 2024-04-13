@@ -61,10 +61,11 @@ class Stats
             if($el['total']){
                 if($this->type == 'global'){
                     $el['pourcent'] = round($el['total']/$el['score'], 2);
-                }else{
+                    return $el;
+                }elseif($el['total'] >= 20){
                     $el['pourcent'] = round($el['score'] * 100 / $el['total'], 2);
+                    return $el;
                 }
-                return $el;
             }
         }, $this->stats);
 

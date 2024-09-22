@@ -1,0 +1,12 @@
+.login{
+  align-items: center;
+  background: rgb(var(--color-primary));
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+  min-height: 100vh;
+  &__title{
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+}

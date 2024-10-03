@@ -7,11 +7,23 @@ class Stats
   protected $games;
   protected $players;
   protected $type;
+  protected $date_from;
+  protected $date_to;
   protected $stats = [];
 
-  public function __construct(string $type)
+  public function __construct(string $type, string $date_from = '', string $date_to = '')
   {
-    $this->games = Game::all();
+    $this->date_from = $date_from;
+    $this->date_to = $date_to;
+
+    if($this->date_from && $this->date_to){
+      $this->games = Game::all()
+        ->where('created_at', '>=', $this->date_from.' 00:00:00')
+        ->where('created_at', '<=', $this->date_to.' 23:59:59');
+    }else{
+      $this->games = Game::all();
+    }
+
     $this->players = Player::all();
     $this->type = $type;
 
@@ -114,7 +126,7 @@ class Stats
     }
     foreach ($this->stats as $key => $stats) {
       if ($stats['total'] < 20) {
-        unset($this->stats[$key]);
+        //unset($this->stats[$key]);
       }
     }
   }
@@ -129,7 +141,7 @@ class Stats
     }
     foreach ($this->stats as $key => $stats) {
       if ($stats['total'] < 5) {
-        unset($this->stats[$key]);
+        //unset($this->stats[$key]);
       }
     }
   }

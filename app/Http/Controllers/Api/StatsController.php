@@ -14,7 +14,7 @@ class StatsController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $stats = new Stats($request->type);
+        $stats = new Stats($request->type,$request->date_from ?? '',$request->date_to ?? '');
 
         return new StatsCollection(
             resource: $stats->getStats()

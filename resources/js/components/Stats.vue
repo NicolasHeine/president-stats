@@ -15,13 +15,18 @@
   import {ref} from "vue";
 
   const stats = ref([]);
-  const props = defineProps(['type', 'title']);
+  const props = defineProps(['type', 'title', 'date_from', 'date_to']);
 
   const loadFromServer = () => {
+    let params = {
+      'type': props.type,
+    };
+    if(props.date_from && props.date_to){
+      params.date_from = props.date_from;
+      params.date_to = props.date_to;
+    }
     axios.get('/api/stats', {
-      params: {
-        'type': props.type,
-      }
+      params: params
     })
     .then((res) => stats.value = res.data.data)
     .catch((err) => console.log(err));

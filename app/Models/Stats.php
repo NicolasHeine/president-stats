@@ -125,8 +125,8 @@ class Stats
       }
     }
     foreach ($this->stats as $key => $stats) {
-      if ($stats['total'] < 20) {
-        //unset($this->stats[$key]);
+      if ($stats['total'] < 20 && !$this->date_from && !$this->date_to) {
+        unset($this->stats[$key]);
       }
     }
   }
@@ -140,8 +140,8 @@ class Stats
       }
     }
     foreach ($this->stats as $key => $stats) {
-      if ($stats['total'] < 5) {
-        //unset($this->stats[$key]);
+      if ($stats['total'] < 5 && !$this->date_from && !$this->date_to) {
+        unset($this->stats[$key]);
       }
     }
   }
